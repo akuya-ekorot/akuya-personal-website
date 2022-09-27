@@ -26,7 +26,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::service.service",
-      "inversedBy": "case_studies"
+      "mappedBy": "case_studies"
     }
   }
 }
