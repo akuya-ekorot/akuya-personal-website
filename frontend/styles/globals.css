@@ -16,19 +16,3 @@ a {
 * {
   box-sizing: border-box;
 }
-
-/* slightly transparent fallback */
-.custom-backdrop-blur {
-  background-color: rgba(255, 255, 255, 1);
-}
-
-/* if backdrop support: very transparent and blurred */
-@supports (
-  (-webkit-backdrop-filter: blur(2000px)) or (backdrop-filter: blur(2000px))
-) {
-  .custom-backdrop-blur {
-    background-color: rgba(255, 255, 255, 0.5);
-    -webkit-backdrop-filter: blur(2000px);
-    backdrop-filter: blur(2000px);
-  }
-}
