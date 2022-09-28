@@ -2,8 +2,29 @@ import client from "../lib/apollo";
 import { gql } from "@apollo/client";
 import NavBar from "../components/NavBar";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home({ navLinks, heading, services }) {
+  const [count, setCount] = useState(0);
+  const countRef = useRef(count);
+  countRef.current = count;
+
+  function getCountTimeout() {
+    setTimeout(() => {
+      if (countRef.current == services.length - 1) {
+        setCount(0);
+      } else {
+        setCount((count) => {
+          return count + 1;
+        });
+      }
+    }, 5000);
+  }
+
+  useEffect(() => {
+    getCountTimeout();
+  });
+
   return (
     <div className="bg-akuya-1 flex flex-col items-center gap-[60px] h-screen w-screen">
       <NavBar links={navLinks} />
@@ -12,13 +33,17 @@ export default function Home({ navLinks, heading, services }) {
           <h1 className="text-h1 font-serif w-[500px]">
             {heading}
             <br />
-            <span className="text-accent">
-              {services[0].attributes.heroTitle}.
+            <span className="text-accent" ref={countRef}>
+              {services[count]?.attributes.heroTitle}.
             </span>
           </h1>
         </div>
         <div className="relative flex-grow h-[500px] w-[500px]">
-          <Image src={`${services[0].attributes.imageUrl}`} layout="fill" objectFit="cover" />
+          <Image
+            src={`${services[count]?.attributes.imageUrl}`}
+            layout="fill"
+            objectFit="cover"
+          />
         </div>
       </section>
     </div>
