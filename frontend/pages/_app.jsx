@@ -4,7 +4,7 @@ import Script from "next/script";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div>
+    <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
         gtag('js', new Date()); gtag('config', 'G-FK94KZNMM3');`}
       </Script>
       <Component {...pageProps} />
-    </div>
+    </>
   );
 }
 

@@ -3,8 +3,9 @@ import { gql } from "@apollo/client";
 import NavBar from "../components/NavBar";
 import { useEffect, useRef, useState } from "react";
 import Hero from "../components/Hero";
+import ServiceSection from "../components/ServiceSection";
 
-export default function Home({ navLinks, heading, services }) {
+export default function Home({ navLinks, heading, services, serviceSection }) {
   const [count, setCount] = useState(0);
   const countRef = useRef(count);
   countRef.current = count;
@@ -26,7 +27,7 @@ export default function Home({ navLinks, heading, services }) {
   });
 
   return (
-    <div className="bg-akuya-1 flex flex-col items-center gap-[60px] h-screen w-screen">
+    <div className="bg-akuya-1 flex flex-col items-center gap-[60px] w-screen">
       <NavBar links={navLinks} />
       <Hero
         services={services}
@@ -34,6 +35,7 @@ export default function Home({ navLinks, heading, services }) {
         heading={heading}
         count={count}
       />
+      <ServiceSection serviceSection={serviceSection} services={services} />
     </div>
   );
 }
@@ -57,12 +59,22 @@ export async function getStaticProps() {
               services {
                 data {
                   attributes {
+                    title
+                    caption
                     heroTitle
                     imageUrl
                     slug
                   }
                 }
               }
+            }
+          }
+        }
+        serviceSection {
+          data {
+            attributes {
+              title
+              paragraph
             }
           }
         }
@@ -75,6 +87,7 @@ export async function getStaticProps() {
       navLinks: data.navLinks.data,
       heading: data.hero.data.attributes.heading,
       services: data.hero.data.attributes.services.data,
+      serviceSection: data["serviceSection"].data.attributes,
     },
   };
 }
