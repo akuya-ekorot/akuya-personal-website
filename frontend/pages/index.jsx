@@ -1,9 +1,7 @@
 import client from "../lib/apollo";
 import { gql } from "@apollo/client";
 import NavBar from "../components/NavBar";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import Button from "../components/Button";
 import Hero from "../components/Hero";
 
 export default function Home({ navLinks, heading, services }) {
