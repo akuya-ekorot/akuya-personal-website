@@ -1,4 +1,5 @@
 import NavLink from "../components/NavLink";
+import Button from "./Button";
 
 export default function NavBar({ links }) {
   return (
@@ -12,9 +13,12 @@ export default function NavBar({ links }) {
             return <NavLink link={navLink} />;
           })}
         </div>
-        <div className="px-5 py-2.5 bg-accent text-akuya-1">
-          <a>Hire Me</a>
-        </div>
+        <Button
+          text={`Hire Me`}
+          bgColor={`accent`}
+          textColor={`akuya-1`}
+          link={`hire-me`}
+        />
       </div>
     </nav>
   );

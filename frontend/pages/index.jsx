@@ -3,7 +3,7 @@ import { gql } from "@apollo/client";
 import NavBar from "../components/NavBar";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import HeroButton from "../components/HeroButton";
+import Button from "../components/Button";
 
 export default function Home({ navLinks, heading, services }) {
   const [count, setCount] = useState(0);
@@ -39,17 +39,20 @@ export default function Home({ navLinks, heading, services }) {
             </span>
           </h1>
           <div className="flex flex-row gap-[30px] w-full">
-            <HeroButton
+            <Button
               text={`Hire Me`}
               bgColor={`akuya-6`}
               textColor={`akuya-1`}
               link={`hire-me`}
+              hero
             />
-            <HeroButton
+            <Button
               text={`Learn More`}
               bgColor={`akuya-1`}
               textColor={`akuya-7`}
               link={`services`}
+              hero
+              border
             />
           </div>
         </div>
