@@ -3,6 +3,7 @@ import { gql } from "@apollo/client";
 import NavBar from "../components/NavBar";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import HeroButton from "../components/HeroButton";
 
 export default function Home({ navLinks, heading, services }) {
   const [count, setCount] = useState(0);
@@ -29,7 +30,7 @@ export default function Home({ navLinks, heading, services }) {
     <div className="bg-akuya-1 flex flex-col items-center gap-[60px] h-screen w-screen">
       <NavBar links={navLinks} />
       <section className="flex flex-row items-stretch w-full max-w-7xl">
-        <div className="flex-grow flex items-center">
+        <div className="flex-grow flex flex-col gap-[60px]">
           <h1 className="text-h1 font-serif w-[500px]">
             {heading}
             <br />
@@ -37,6 +38,20 @@ export default function Home({ navLinks, heading, services }) {
               {services[count]?.attributes.heroTitle}.
             </span>
           </h1>
+          <div className="flex flex-row gap-[30px] w-full">
+            <HeroButton
+              text={`Hire Me`}
+              bgColor={`akuya-6`}
+              textColor={`akuya-1`}
+              link={`hire-me`}
+            />
+            <HeroButton
+              text={`Learn More`}
+              bgColor={`akuya-1`}
+              textColor={`akuya-7`}
+              link={`services`}
+            />
+          </div>
         </div>
         <div className="relative flex-grow h-[500px] w-[500px]">
           <Image
