@@ -10,7 +10,7 @@ export default function NavBar({ links }) {
         </div>
         <div className="flex flex-row items-center">
           {links?.map((navLink) => {
-            return <NavLink link={navLink} />;
+            return <NavLink link={navLink} key={navLink.attributes.url} />;
           })}
         </div>
         <Button

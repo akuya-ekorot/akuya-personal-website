@@ -27,7 +27,7 @@ export default function Home({ navLinks, heading, services, serviceSection }) {
   });
 
   return (
-    <div className="bg-akuya-1 flex flex-col items-center gap-[60px] w-screen">
+    <div className="bg-akuya-1 flex flex-col items-center gap-[60px] w-screen" key="1">
       <NavBar links={navLinks} />
       <Hero
         services={services}

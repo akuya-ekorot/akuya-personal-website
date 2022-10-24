@@ -14,7 +14,7 @@ export default function ServiceSection({ serviceSection, services }) {
           const caption = service?.attributes.caption;
 
           return (
-            <div className="w-[400px] h-[420px] flex flex-col gap-[30px]">
+            <div className="w-[400px] h-[420px] flex flex-col gap-[30px]" key={service.attributes.title}>
               <div className="relative flex-grow">
                 <Image
                   src={service?.attributes.imageUrl}
