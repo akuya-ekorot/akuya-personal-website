@@ -10,11 +10,14 @@ export default function ServiceSection({ serviceSection, services }) {
         </p>
       </div>
       <div className="flex flex-row justify-between gap-[30px] w-full">
-        {services.slice(0, 3).map((service) => {
+        {services.slice(0, 3).map((service, index) => {
           const caption = service?.attributes.caption;
 
           return (
-            <div className="w-[400px] h-[420px] flex flex-col gap-[30px]">
+            <div
+              className="w-[400px] h-[420px] flex flex-col gap-[30px]"
+              key={index}
+            >
               <div className="relative flex-grow">
                 <Image
                   src={service?.attributes.imageUrl}

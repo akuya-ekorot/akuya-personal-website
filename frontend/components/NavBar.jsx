@@ -9,8 +9,8 @@ export default function NavBar({ links }) {
           <p className="font-serif text-h2">Akuya</p>
         </div>
         <div className="flex flex-row items-center">
-          {links?.map((navLink) => {
-            return <NavLink link={navLink} />;
+          {links?.map((navLink, index) => {
+            return <NavLink link={navLink} key={index} />;
           })}
         </div>
         <Button
