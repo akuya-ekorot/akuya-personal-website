@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ServiceSection({ serviceSection, services }) {
   return (
@@ -14,8 +15,9 @@ export default function ServiceSection({ serviceSection, services }) {
           const caption = service?.attributes.caption;
 
           return (
-            <div
+            <Link
               className="w-[400px] h-[420px] flex flex-col gap-[30px]"
+              href={service?.attributes.slug}
               key={index}
             >
               <div className="relative flex-grow">
@@ -30,12 +32,12 @@ export default function ServiceSection({ serviceSection, services }) {
                   {service?.attributes.title}
                 </h3>
                 <p className="font-sans text-p2 text-akuya-5">
-                  {caption.length < 90
+                  {caption?.length < 90
                     ? caption
-                    : `${caption.substring(0, 90)}...`}
+                    : `${caption?.substring(0, 100)}...`}
                 </p>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>

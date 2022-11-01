@@ -1,5 +1,5 @@
 import NavLink from "../components/NavLink";
-import Button from "./Button";
+import Link from "next/link";
 
 export default function NavBar({ links }) {
   return (
@@ -13,12 +13,14 @@ export default function NavBar({ links }) {
             return <NavLink link={navLink} key={index} />;
           })}
         </div>
-        <Button
-          text={`Hire Me`}
-          bgColor={`accent`}
-          textColor={`akuya-1`}
-          link={`hire-me`}
-        />
+
+        <Link href="/hire-me" passHref>
+          <div
+            className={`bg-accent text-akuya-1 "text-p2" py-[10px] px-[20px]`}
+          >
+            <p>Hire Me</p>
+          </div>
+        </Link>
       </div>
     </nav>
   );

@@ -44,7 +44,7 @@ export async function getStaticProps() {
   const { data } = await client.query({
     query: gql`
       query {
-        navLinks(sort: "position") {
+        navLinks {
           data {
             attributes {
               name
