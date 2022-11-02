@@ -5,9 +5,9 @@ export default function NavBar({ links }) {
   return (
     <nav className="flex justify-center w-screen">
       <div className="flex flex-row justify-between items-center w-full max-w-7xl">
-        <div className="px-2.5">
+        <Link className="px-2.5" href={`/`}>
           <p className="font-serif text-h2">Akuya</p>
-        </div>
+        </Link>
         <div className="flex flex-row items-center">
           {links?.map((navLink, index) => {
             return <NavLink link={navLink} key={index} />;
