@@ -1,15 +1,44 @@
 import NavBar from "../../components/NavBar";
 import ServicesHero from "../../components/ServicesHero";
+import ServicePageServiceSection from "../../components/ServicePageServiceSection";
 
 import client from "../../lib/apollo";
 import { gql } from "@apollo/client";
+import { useState, useRef, useEffect } from "react";
 
 const Services = (props) => {
+  const [count, setCount] = useState(0);
+  const countRef = useRef(count);
+  countRef.current = count;
+
+  function getCountTimeout() {
+    setTimeout(() => {
+      if (countRef.current == props?.wordPairs.length - 1) {
+        setCount(0);
+      } else {
+        setCount((count) => {
+          return count + 1;
+        });
+      }
+    }, 5000);
+  }
+
+  useEffect(() => {
+    getCountTimeout();
+  }, [count]);
   return (
-    <>
+    <div className="bg-akuya-1 flex flex-col items-center gap-[60px] w-screen">
       <NavBar links={props?.navLinks} />
-      <ServicesHero />
-    </>
+      <ServicesHero
+        heading={props?.heading}
+        wordPairs={props?.wordPairs}
+        count={count}
+      />
+      <ServicePageServiceSection
+        servicePageServiceSection={props?.serviceSection}
+        services={props?.services}
+      />
+    </div>
   );
 };
 
@@ -48,6 +77,7 @@ export async function getStaticProps() {
               caption
               title
               imageUrl
+              slug
             }
           }
         }
