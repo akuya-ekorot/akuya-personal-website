@@ -24,7 +24,7 @@ export default function Home({ navLinks, heading, services, serviceSection }) {
 
   useEffect(() => {
     getCountTimeout();
-  });
+  }, [count]);
 
   return (
     <div className="bg-akuya-1 flex flex-col items-center gap-[60px] w-screen">

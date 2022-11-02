@@ -1,4 +1,6 @@
 import NavBar from "../../components/NavBar";
+import ServicesHero from "../../components/ServicesHero";
+
 import client from "../../lib/apollo";
 import { gql } from "@apollo/client";
 
@@ -6,6 +8,7 @@ const Services = (props) => {
   return (
     <>
       <NavBar links={props?.navLinks} />
+      <ServicesHero />
     </>
   );
 };
@@ -24,28 +27,34 @@ export async function getStaticProps() {
             }
           }
         }
-        hero {
+        wordPairs {
           data {
             attributes {
-              heading
-              services {
-                data {
-                  attributes {
-                    title
-                    caption
-                    heroTitle
-                    imageUrl
-                    slug
-                  }
-                }
-              }
+              first
+              second
             }
           }
         }
-        serviceSection {
+        serviceHero {
           data {
             attributes {
+              heading
+            }
+          }
+        }
+        services {
+          data {
+            attributes {
+              caption
               title
+              imageUrl
+            }
+          }
+        }
+        servicePageServiceSection {
+          data {
+            attributes {
+              heading
               paragraph
             }
           }
@@ -57,9 +66,10 @@ export async function getStaticProps() {
   return {
     props: {
       navLinks: data.navLinks.data,
-      heading: data.hero.data.attributes.heading,
-      services: data.hero.data.attributes.services.data,
-      serviceSection: data["serviceSection"].data.attributes,
+      wordPairs: data.wordPairs.data,
+      heading: data.serviceHero.data.attributes.heading,
+      services: data.services.data,
+      serviceSection: data.servicePageServiceSection.data.attributes,
     },
   };
 }
